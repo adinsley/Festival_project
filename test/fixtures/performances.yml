@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  genre_id: 
+  show_id: 
+  venue_id: 
+  date: 2016-01-09
+  price: 1
+  restrictions: MyString
+  description: MyString
+
+two:
+  genre_id: 
+  show_id: 
+  venue_id: 
+  date: 2016-01-09
+  price: 1
+  restrictions: MyString
+  description: MyString

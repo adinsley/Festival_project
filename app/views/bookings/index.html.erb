@@ -1,2 +1,10 @@
-<h1>Bookings#index</h1>
-<p>Find me in app/views/bookings/index.html.erb</p>
+<h1>My Bookings</h1>
+    <%current_user.performances.each do |performance| %>
+
+  <h1><%= performance.show.title %></h1>
+  <p>Show:<%= performance.venue.name %></p>
+  <p>Date:<%= performance.date %></p>
+
+
+
+  <%end%>

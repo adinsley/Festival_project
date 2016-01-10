@@ -1,2 +1,10 @@
-<h1>Bookings#show</h1>
-<p>Find me in app/views/bookings/show.html.erb</p>
+
+<h1><%= @booking.performance.show.title %></h1>
+<p>Venue: <%= @booking.performance.venue.name%></p>
+<p>Genre: <%= @booking.performance.genre.name %></p>
+<p>Description: <%= @booking.performance.description %></p>
+<p>Ingredients: <%= @booking.performance.restrictions %></p>
+
+
+
+

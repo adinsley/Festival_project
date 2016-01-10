@@ -1,0 +1,11 @@
+<h1>List of Genres</h1>
+<% @genres.each do |genre| %>
+
+<p><%=genre.name%></p>
+
+  <%genre.performances.each do |performance|%>
+  <p><%=performance.show.title%></p>
+
+  <%end%>
+
+<%end%>

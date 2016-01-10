@@ -7,6 +7,24 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<header>
+  <nav>
+    <p class="login_name">Logged In: <%= current_user.email.split('@')[0].capitalize %>:</p>
+    <ul>
+      <%= link_to "My Bookings", root_path, class: "btn" %>
+
+
+    </ul>
+  </nav>
+  </header>
+    <%= link_to "Our Venues", venues_path, class: "btn" %>
+    <%= link_to "Our Shows ", shows_path, class: "btn" %>
+
+    <%= link_to " Our Performaces", performances_path, class: "btn" %>
+
+    <%= link_to "Genres", genres_path, class: "btn" %>
+   
+
   <!-- Devise Error Notices -->
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>

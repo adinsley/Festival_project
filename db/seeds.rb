@@ -5,5 +5,24 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-Booking.create(performance_id:2, user_id:1, tickets:2)
-Booking.create(performance_id:3, user_id:2, tickets:2)
+puts "dropping data"
+Booking.delete_all
+Performance.delete_all
+Genre.delete_all
+Venue.delete_all
+Show.delete_all
+User.delete_all
+
+puts "creating users"
+u1 = User.create(email:"andy@example.com", password:"Password", username:"Andrew Insley")
+
+puts "creating shows"
+ s1 = Show.create(title:"Take That")
+ puts "creating venues"
+ v1 = Venue.create(name:"MEN Arena")
+ puts "creating genre"
+ g1 = Genre.create(name:"90's Pop")
+ puts "creating performance"
+p1 = Performance.create(show_id:s1.id, venue_id:v1.id, genre_id:g1.id)
+  puts "creating booking"
+Booking.create(performance_id:p1.id, user_id:u1.id, tickets:2)

@@ -1,9 +1,11 @@
 <h1>My Bookings</h1>
-    <%current_user.performances.each do |performance| %>
+    <%@bookings.each do |booking| %>
 
-  <h1><%= performance.show.title %></h1>
-  <p>Show:<%= performance.venue.name %></p>
-  <p>Date:<%= performance.date %></p>
+    <% if booking.performance %>
+  <h1><%= booking.performance.show.title %></h1>
+  <p>Show:<%= booking.performance.venue.name %></p>
+  <p>Date:<%= booking.performance.date %></p>
+  <% end %>
 
 
 

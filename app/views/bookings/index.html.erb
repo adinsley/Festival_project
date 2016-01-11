@@ -3,9 +3,12 @@
 
     <% if booking.performance %>
   <h1><%= booking.performance.show.title %></h1>
+  <p><%= link_to "Link", show_path(booking.performance.show), class: "btn"%></p>
   <p>Show:<%= booking.performance.venue.name %></p>
   <p>Date:<%= booking.performance.date %></p>
   <% end %>
+
+  <%= link_to "See Booking details", booking_path(booking), class: "btn" %>
 
 
 

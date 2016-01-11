@@ -4,10 +4,12 @@ class GenresController < ApplicationController
     @genre =Genre.new
   end
 
-
   def index
-    @genres = Genre.all
-  end
+      if params[:genre_id]
+            @genres = Genre.search(params[:genre_id]).order("created_at DESC")
+          else
+            @genres = Genre.all.order("created_at DESC")
+          end
+    end
 
-  
 end

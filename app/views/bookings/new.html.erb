@@ -1,2 +1,9 @@
-<h1>Bookings#new</h1>
-<p>Find me in app/views/bookings/new.html.erb</p>
+<h1>New Booking for</h1>
+
+<%=form_for [@performance, @booking] do |f| %>
+  <%= f.label :tickets %>
+  <%=f.text_field :tickets %>
+  <%=f.hidden_field :performance_id, value: @performance.id %>
+
+  <%=f.submit 'Book Tickets' %>
+<%end%>

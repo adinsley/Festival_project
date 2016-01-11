@@ -19,10 +19,11 @@ u1 = User.create(email:"andy@example.com", password:"Password", username:"Andrew
 puts "creating shows"
  s1 = Show.create(title:"Take That")
  puts "creating venues"
- v1 = Venue.create(name:"MEN Arena")
+ v1 = Venue.create(name:"MEN Arena", loaction:"Manchester M1 6LL", description: "The Manchester Arena is an indoor arena in Hunts Bank, Manchester, England. Situated immediately north of the city centre, most of the arena is situated above Manchester Victoria station in air rights space. The arena has the highest seating capacity of any indoor venue in the United Kingdom, and fourth largest in the European Union with a capacity of 21,000 and is one of the world's busiest indoor arenas, hosting music and sporting events such as boxing and swimming. The arena was a key part of Manchester's bids to host the Olympic Games in 1996 and 2000 and was eventually used for the 2002 Commonwealth Games." )
  puts "creating genre"
  g1 = Genre.create(name:"90's Pop")
  puts "creating performance"
+ 
 p1 = Performance.create(show_id:s1.id, venue_id:v1.id, genre_id:g1.id)
   puts "creating booking"
 Booking.create(performance_id:p1.id, user_id:u1.id, tickets:2)

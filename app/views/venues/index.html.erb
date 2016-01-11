@@ -1,2 +1,15 @@
-<h1>Venues#index</h1>
-<p>Find me in app/views/venues/index.html.erb</p>
+<h2 class="Search Result">Search Venues for "<%=@search_item%>"</h2>
+<br>
+<% @venues.each do |venue| %>
+  <h1>Venue<%= venue.name %></p>
+  <% venue.performances.each do |performance|%>
+  <h2>Performances</h2>
+  <p>Show: <%=performance.show.title%></p>
+    <%  if performance.date %>
+  <p>Date: <%=performance.date.strftime("%B %d, %Y")%></p>
+    <%end%>
+  
+  <%= link_to "See Venue details", venue_path(venue), class: "btn" %>
+
+<% end %>
+<% end %>

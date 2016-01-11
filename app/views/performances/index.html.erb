@@ -1,14 +1,20 @@
 
 
-<%= current_user.email %>
 <br>
 <br>
 <% @performances.each do |performance| %>
   <p>Show:<%= performance.show.title %></p>
   <p>Venue: <%= performance.venue.name %></p>
   <p>Genre: <%= performance.genre.name %></p>
+        <% performance.bookings.each do |booking| %>
+            <% if current_user %>
+              <% booking.user.id == current_user.id %>
+                <p>You are going to this concert</p>
+            <%end %>  
+        <%end%>
   <br> 
   <%= link_to "See Performance details", performance_path(performance), class: "btn" %>
+  <%= link_to "Book this Performance", new_performance_booking_path(performance), class: "btn" %> 
 
 
 <% end %>

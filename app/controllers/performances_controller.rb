@@ -8,9 +8,8 @@ class PerformancesController < ApplicationController
   end
 
   def create
-    current_user.performances.create(performance_params)
-     redirect_to(performances_path)
-    
+    Performance.create(performance_params)
+    redirect_to(performances_path)
   end
 
   def update
@@ -33,8 +32,13 @@ class PerformancesController < ApplicationController
   end
 
   def index
-    @performances = Performance.all
-  end
+      if params[:search]
+            @performances = Performance.search(params[:search]).order("created_at DESC")
+            @search_item = params[:search]
+          else
+            @performances = Performance.all.order("created_at DESC")
+          end
+    end
 
   def show
     @performance = Performance.find(params[:id])

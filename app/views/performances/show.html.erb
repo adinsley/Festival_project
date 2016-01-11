@@ -1,9 +1,12 @@
 
 <h1><%= @performance.show.title %></h1>
 <p>Venue: <%= @performance.venue.name%></p>
+  <% if @performance.date %>
+<p>Date: <%= @performance.date.strftime("%B %d, %Y") %></p>
+<% end %>
 <p>Genre: <%= @performance.genre.name %></p>
 <p>Description: <%= @performance.description %></p>
-<p>Ingredients: <%= @performance.restrictions %></p>
+<p>Restrictions: <%= @performance.restrictions %></p>
 
 <%= link_to "Edit Performance", edit_performance_path(@performance), class: "btn" %>
 <%= button_to('Delete Performance', performance_path(@performance), method: :delete, data: {confirm: 'Delete are you sure?'})%>

@@ -15,8 +15,15 @@ class VenuesController < ApplicationController
   end
 
   def index
-  end
+      if params[:search]
+            @venues = Venue.search(params[:search]).order("created_at DESC")
+            @search_item = params[:search]
+          else
+            @venues = Venue.all.order("created_at DESC")
+          end
+    end
 
   def show
+    @venue = Venue.find(params[:id])
   end
 end

@@ -1,27 +1,27 @@
 Rails.application.routes.draw do
 
 
-  resources :bookings
+  resources :bookings, :shows, :genres,:venues
 
-  resources :performances
+  resources :performances do
+    resources :bookings
+  end
 
-  resources :shows
-  resources :genres
-  resources :venues
+  # get 'users/new'
 
-  get 'users/new'
+  # get 'users/create'
 
-  get 'users/create'
+  # get 'users/update'
 
-  get 'users/update'
+  # get 'users/edit'
 
-  get 'users/edit'
+  # get 'users/destroy'
 
-  get 'users/destroy'
+  # get 'users/index'
 
-  get 'users/index'
+  # get 'users/show'
 
-  get 'users/show'
+  # get 'home/about'
 
   
 

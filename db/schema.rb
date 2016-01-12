@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160112093613) do
+ActiveRecord::Schema.define(version: 20160112094458) do
 
   create_table "bookings", force: :cascade do |t|
     t.integer  "performance_id"
@@ -39,6 +39,8 @@ ActiveRecord::Schema.define(version: 20160112093613) do
     t.string   "description"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.datetime "start"
+    t.datetime "end"
   end
 
   add_index "performances", ["genre_id"], name: "index_performances_on_genre_id"
@@ -51,6 +53,7 @@ ActiveRecord::Schema.define(version: 20160112093613) do
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "link"
   end
 
   create_table "users", force: :cascade do |t|
@@ -79,6 +82,8 @@ ActiveRecord::Schema.define(version: 20160112093613) do
     t.text     "loaction"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "link"
+    t.integer  "capacity"
   end
 
 end

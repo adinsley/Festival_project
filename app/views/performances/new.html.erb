@@ -18,8 +18,12 @@
 <%= f.select :genre_id, options %>
 <br>
 <br>
-<%= f.label :date, "Date of Performance" %>
-<%= f.date_select :date, :order => [:day, :month, :year] %>
+<%= f.label :start, "Start Time" %>
+<%= f.datetime_select :start  %>
+<br>
+<br>
+<%= f.label :end, "Finish Time" %>
+<%= f.datetime_select :end  %>
 <br>
 <br>
 <%=f.label :price, "Ticket Price in £"%>

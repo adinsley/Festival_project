@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160109142047) do
+ActiveRecord::Schema.define(version: 20160112093613) do
 
   create_table "bookings", force: :cascade do |t|
     t.integer  "performance_id"
@@ -34,7 +34,6 @@ ActiveRecord::Schema.define(version: 20160109142047) do
     t.integer  "genre_id"
     t.integer  "show_id"
     t.integer  "venue_id"
-    t.date     "date"
     t.integer  "price"
     t.string   "restrictions"
     t.string   "description"

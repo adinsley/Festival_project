@@ -8,8 +8,14 @@ class PerformancesController < ApplicationController
   end
 
   def create
-    Performance.create(performance_params)
-    redirect_to(performances_path)
+    performance = Performance.new(performace_params)
+    if performance.overlap_check(params[:venue_id], params[:start], params[:end])
+      flash[:alert] = "Venue already booked at this time"
+      redirect_to(new_performance_path)
+    else
+      performance.save
+      redirect_to(performances_path)
+    end
   end
 
   def update

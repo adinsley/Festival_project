@@ -6,23 +6,14 @@ class Performance < ActiveRecord::Base
   belongs_to :venue
 
   scope :venue_check, -> (v_id){where("venue_id == ?", v_id)}
-  scope :before_end,  -> (start){where("end < ?", start)}
-  scope :after_start, -> (finish){where("start > ?", finish)}
+  scope :finish_after,  -> (start){where("finish > ?", start)}
+  scope :start_before, -> (finish){where("start < ?", finish)}
+  scope :overlap_check, -> (v_id,start,finish){venue_check(v_id).finish_after(start).start_before(finish)}
 
-
-  
-  
 
   def self.search(query)
       # where(:title, query) -> This would return an exact match of the query
       where("date", "%#{query}%") 
     end
-
-  def overlap_check(v_id, start, finish)
-     venue_check(v_id).before_end(start) && venue_check(v_id).after_start(finish)
-  end
-
-
-
 
 end

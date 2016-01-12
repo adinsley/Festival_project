@@ -3,6 +3,7 @@
 <br>
 <br>
 <% @performances.each do |performance| %>
+<% if performance.show %>
   <p>Show:<%= performance.show.title %></p>
   <p>Venue: <%= performance.venue.name %></p>
   <p>Genre: <%= performance.genre.name %></p>
@@ -11,6 +12,7 @@
               <% booking.user.id == current_user.id %>
                 <p>You are going to this concert</p>
             <%end %>  
+            <%end%>
         <%end%>
   <br> 
   <%= link_to "See Performance details", performance_path(performance), class: "btn" %>

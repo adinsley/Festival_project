@@ -1,10 +1,18 @@
+<%= link_to "Create a New Genre", new_genre_path %>
+
 <h1>List of Genres</h1>
 <% @genres.each do |genre| %>
 
-<p><%=genre.name%></p>
+<h1><%=genre.name%></h1>
+<%= link_to "See More Genre Details", genre_path(genre) %>
 
   <%genre.performances.each do |performance|%>
+  <section class="performance_div">
   <p><%=performance.show.title%></p>
+  <p><%=performance.venue.name%></p>
+  <p><%=performance.human_readable_start_date%></p>
+  <p><%=performance.human_readable_start_time%></p>
+  </section>
 
   <%end%>
 

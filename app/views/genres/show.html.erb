@@ -1,2 +1,11 @@
-<h1>Genres#show</h1>
-<p>Find me in app/views/genres/show.html.erb</p>
+<h1><%=@genre.name%></h1>
+
+  <%@genre.performances.each do |performance|%>
+  <section class="performance_div">
+  <p><%=performance.show.title%></p>
+  <p><%=performance.venue.name%></p>
+  <p><%=performance.human_readable_start_date%></p>
+  <p><%=performance.human_readable_start_time%></p>
+  </section>
+
+  <%end%>

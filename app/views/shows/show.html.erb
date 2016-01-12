@@ -1,3 +1,14 @@
 <h1><%= @show.title %></h1>
-
-
+<img src="@show.image">
+<p>Description <%= @show.description  %></p>
+<a href="@show.link" class="list_link">Artist Website</a>
+  <% @show.performances.each do |performance|%>
+      <section class="performance_div">
+        <p>Venue: <%=performance.venue.name%></p>
+      <% if performance.start %>
+        <p>Date <%=performance.human_readable_start_date%></p>
+        <p>Start Time <%=performance.human_readable_start_time%></p>
+      <%end%>
+    
+    </section>
+<% end %>

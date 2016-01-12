@@ -2,17 +2,21 @@
 <h3>Details <%= @venue.description %></p>
 <h3>Location <%= @venue.loaction %></p>
 <h3>Capacity <%= @venue.capacity %></p>
+<h2>Performances</h2>
 
 <% @venue.performances.each do |performance|%>
-  <h2>Performances</h2>
-  <p>Show: <%= link_to "#{performance.show.title}", show_path(performance.show)%></p>
-  <% if performance.start %>
-    <p>Date <%=performance.human_readable_start_date%></p>
-    <p>Start Time <%=performance.human_readable_start_time%></p>
+  <section class ="performance_div">
+      <p><%= link_to "#{performance.show.title}", show_path(performance.show)%></p>
+    <% if performance.start %>
+      <p>Date <%=performance.human_readable_start_date%></p>
+      <p>Start Time <%=performance.human_readable_start_time%></p>
     <%= link_to "See performance details", performance_path(performance) %>
+  </section> 
   
 
 
   <%end%>
 
 <%end%>
+
+<%= link_to "Edit Venue Details", edit_venue_path(@venue) %>

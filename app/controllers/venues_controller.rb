@@ -10,9 +10,12 @@ class VenuesController < ApplicationController
   end
 
   def update
+    Venue.update(venue_params)
+    redirect_to(venues_path)
   end
 
   def edit
+    @venue = Venue.find(params[:id])
   end
 
   def destroy
@@ -25,7 +28,7 @@ class VenuesController < ApplicationController
           else
             @venues = Venue.all.order("created_at DESC")
           end
-    end
+  end
 
   def show
     @venue = Venue.find(params[:id])

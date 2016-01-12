@@ -1,0 +1,20 @@
+<%= form_for @show do |f| %>
+
+<%= f.label :title, "Show Title" %>
+<%= f.text_field :title %>
+<br>
+<br>
+<%= f.label :image, "Add image link" %>
+<%= f.text_field :image %>
+<br>
+<br>
+<%= f.label :link, "Link to Artist Site" %>
+<%= f.text_field :link %>
+<br>
+<br>
+<%= f.label :desciption, "Artist Description" %>
+<%= f.text_field :description %>
+
+<%= f.submit "Create Show" %>
+
+<% end %>

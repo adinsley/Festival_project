@@ -1,17 +1,13 @@
 <h1>My Bookings</h1>
+<section class ="performance_div">
     <%@bookings.each do |booking| %>
-
-    <% if booking.performance %>
-  <h1><%= booking.performance.show.title %></h1>
-  <p><%= link_to "#{booking.performance.show.title}", show_path(booking.performance.show), class: "btn"%></p>
-  <p><%= link_to "#{booking.performance.venue.name}", show_path(booking.performance.venue), class: "btn"%></p>
-  <p>Tickets <%= booking.tickets %></p>
-  <p>Date <%= booking.performance.human_readable_start_date %></p>
-  
-  <% end %>
-
-  <%= link_to "See Booking details", booking_path(booking), class: "btn" %>
-
-
-
-  <%end%>
+      <% if booking.performance %>
+        <h1><%= booking.performance.show.title %></h1>
+        <p><%= link_to "#{booking.performance.show.title}", show_path(booking.performance.show), class: "btn"%></p>
+        <p><%= link_to "#{booking.performance.venue.name}", show_path(booking.performance.venue), class: "btn"%></p>
+        <p>Tickets <%= booking.tickets %></p>
+        <p>Date <%= booking.performance.human_readable_start_date %></p>
+      <% end %>
+      <%= link_to "See Booking details", booking_path(booking), class: "btn" %>
+      </section>
+    <%end%>

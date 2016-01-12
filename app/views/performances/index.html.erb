@@ -1,8 +1,9 @@
 
-
+<%= link_to "Create a New Performance", new_performance_path %>
 <br>
 <br>
 <% @performances.each do |performance| %>
+<section class ="performance_div">
 <% if performance.show %>
   <p class="show_name">Show <%= performance.show.title %></p>
   <p class="venue_name">Venue <%= performance.venue.name %></p>
@@ -20,6 +21,6 @@
   <br> 
   <%= link_to "See Performance details", performance_path(performance), class: "btn" %>
   <%= link_to "Book this Performance", new_performance_booking_path(performance), class: "btn" %> 
-
+</section>
 
 <% end %>

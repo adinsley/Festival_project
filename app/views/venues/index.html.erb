@@ -1,19 +1,20 @@
+<%= link_to "Create New Venue", new_venue_path %>
+
 <% if @search_item %>
-<h2 class="Search Result">Search Venues for "<%=@search_item%>"</h2>
+  <h2 class="Search Result">Search Venues for "<%=@search_item%>"</h2>
 <% end %>
-<br>
-<% @venues.each do |venue| %>
-  <h1><%= venue.name %></p>
-  <% venue.performances.each do |performance|%>
-  <h2>Performances</h2>
-  <p>Show: <%=performance.show.title%></p>
-    <%  if performance.start %>
-  <p>Date <%=performance.human_readable_start_date%></p>
-  <p>Start Time <%=performance.human_readable_start_time%></p>
-
-    <%end%>
-  
-  <%= link_to "See Venue details", venue_path(venue), class: "btn" %>
-
-<% end %>
+  <% @venues.each do |venue| %>
+    <h1><%= venue.name %></h1>
+    <%= link_to "See Venue details", venue_path(venue), class: "btn" %>
+    <h2>Performances</h2>
+    <% venue.performances.each do |performance|%>
+      <section class ="performance_div">
+          <h2><%=performance.show.title%></h2>
+          <%  if performance.start %>
+          <p>Date <%=performance.human_readable_start_date%></p>
+          <p>Start Time <%=performance.human_readable_start_time%></p>
+          <%= link_to "See performance details", performance_path(performance) %>
+      </section>
+          <%end%>
+  <% end %>
 <% end %>

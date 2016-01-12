@@ -1,5 +1,5 @@
 class Venue < ActiveRecord::Base
-  has_many :performances
+  has_many :performances, dependent: :destroy
   has_many :bookings, through: :performances
 
   def self.search(query)

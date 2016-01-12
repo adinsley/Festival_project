@@ -1,6 +1,6 @@
 class Performance < ActiveRecord::Base
   has_many :users, through: :bookings
-  has_many :bookings
+  has_many :bookings, dependent: :destroy
   belongs_to :genre
   belongs_to :show
   belongs_to :venue
@@ -15,5 +15,27 @@ class Performance < ActiveRecord::Base
       # where(:title, query) -> This would return an exact match of the query
       where("date", "%#{query}%") 
     end
+
+  def human_readable_start_date
+       start.strftime('%A, %B %-d %Y')
+    end
+
+  def human_readable_start_time
+       start.strftime('%H:%M')
+     end
+
+  def human_readable_end_date
+       finish.strftime('%A, %B %-d %Y')
+     end
+
+  def human_readable_end_time
+       finish.strftime('%H:%M')
+     end
+
+  def duration_in_minutes
+    ((finish - start)/60).to_i
+  end
+
+
 
 end

@@ -84,3 +84,8 @@ display: inline-block;
  .b {
   font-weight: bold;
  }
+
+ .booked {
+    color: red;
+    font-weight: bold;
+ }

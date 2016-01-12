@@ -1,5 +1,18 @@
 <h1>New Booking for</h1>
 
+<h1><%= @performance.show.title %></h1>
+<p class="big_venue">Venue: <%= @performance.venue.name%></p>
+<% if @performance.start %>
+      <p class="big_date">Date <%= @performance.human_readable_start_date %></p>
+      <p class="big_start">Start Time <%= @performance.human_readable_start_time %></p>
+      <p class="big_duration">Duration <%= @performance.duration_in_minutes %> minutes</p>
+<%end%>
+
+<p>Venue Location <%= @performance.venue.loaction %> </p>
+<p>Genre <%= @performance.genre.name %></p>
+<p>Description <%= @performance.description %></p>
+<p>Restrictions <%= @performance.restrictions %></p>
+
 <%=form_for [@performance, @booking] do |f| %>
   <%= f.label :tickets %>
   <%=f.text_field :tickets %>
@@ -7,3 +20,5 @@
 
   <%=f.submit 'Book Tickets' %>
 <%end%>
+
+

@@ -4,13 +4,16 @@
 <br>
 <% @performances.each do |performance| %>
 <% if performance.show %>
-  <p>Show:<%= performance.show.title %></p>
-  <p>Venue: <%= performance.venue.name %></p>
-  <p>Genre: <%= performance.genre.name %></p>
+  <p class="show_name">Show <%= performance.show.title %></p>
+  <p class="venue_name">Venue <%= performance.venue.name %></p>
+  
+  <p class="date">Date <%= performance.human_readable_start_date %></p>
+  <p class="date">Start Time <%= performance.human_readable_start_time %></p>
+  <p class="duration">Duration <%= performance.duration_in_minutes %> minutes</p>
         <% performance.bookings.each do |booking| %>
             <% if current_user %>
               <% booking.user.id == current_user.id %>
-                <p>You are going to this concert</p>
+                <p class="booked">You are going to this concert</p>
             <%end %>  
             <%end%>
         <%end%>

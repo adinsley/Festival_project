@@ -1,5 +1,5 @@
 class Show < ActiveRecord::Base
-  has_many :performances
+  has_many :performances, dependent: :destroy
   has_many :bookings, through: :performances
 
 

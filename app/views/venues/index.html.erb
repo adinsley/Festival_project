@@ -1,12 +1,16 @@
+<% if @search_item %>
 <h2 class="Search Result">Search Venues for "<%=@search_item%>"</h2>
+<% end %>
 <br>
 <% @venues.each do |venue| %>
-  <h1>Venue<%= venue.name %></p>
+  <h1><%= venue.name %></p>
   <% venue.performances.each do |performance|%>
   <h2>Performances</h2>
   <p>Show: <%=performance.show.title%></p>
-    <%  if performance.date %>
-  <p>Date: <%=performance.date.strftime("%B %d, %Y")%></p>
+    <%  if performance.start %>
+  <p>Date <%=performance.human_readable_start_date%></p>
+  <p>Start Time <%=performance.human_readable_start_time%></p>
+
     <%end%>
   
   <%= link_to "See Venue details", venue_path(venue), class: "btn" %>

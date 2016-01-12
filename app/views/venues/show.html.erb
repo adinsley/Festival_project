@@ -1,3 +1,18 @@
-<h1><%= @venue.name %></h1>
-<p> Address - <%= @venue.loaction%></p>
-<p>Description - <%= @venue.description%></p>
+<h1><%= @venue.name %></p>
+<h3>Details <%= @venue.description %></p>
+<h3>Location <%= @venue.loaction %></p>
+<h3>Capacity <%= @venue.capacity %></p>
+
+<% @venue.performances.each do |performance|%>
+  <h2>Performances</h2>
+  <p>Show: <%=performance.show.title%></p>
+  <% if performance.start %>
+    <p>Date <%=performance.human_readable_start_date%></p>
+    <p>Start Time <%=performance.human_readable_start_time%></p>
+    <%= link_to "See performance details", performance_path(performance) %>
+  
+
+
+  <%end%>
+
+<%end%>

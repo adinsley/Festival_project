@@ -1,0 +1,31 @@
+<%= form_for @venue do |f| %>
+
+<%= f.label :name, "Venue Name" %>
+<%= f.text_field :name %>
+<br>
+<br>
+<%= f.label :image, "Add image link" %>
+<%= f.text_field :image %>
+<br>
+<br>
+<%= f.label :link, "Link to Venue Site" %>
+<%= f.text_field :link %>
+<br>
+<br>
+<%= f.label :loaction, "Venue Address" %>
+<%= f.text_field :loaction %>
+<br>
+<br>
+<%= f.label :capacity, "Venue Capacity" %>
+<%= f.text_field :capacity %>
+<br>
+<br>
+<%= f.label :desciption, "Venue Description" %>
+<%= f.text_field :description %>
+
+<%= f.submit "Create Show" %>
+
+<% end %>
+
+
+

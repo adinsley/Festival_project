@@ -5,7 +5,7 @@
 
 <% @venue.performances.each do |performance|%>
   <h2>Performances</h2>
-  <p>Show: <%=performance.show.title%></p>
+  <p>Show: <%= link_to "#{performance.show.title}", show_path(performance.show)%></p>
   <% if performance.start %>
     <p>Date <%=performance.human_readable_start_date%></p>
     <p>Start Time <%=performance.human_readable_start_time%></p>

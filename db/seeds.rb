@@ -23,7 +23,7 @@ puts "creating shows"
  puts "creating genre"
  g1 = Genre.create(name:"90's Pop")
  puts "creating Performance"
- # p1 = Performance.create(venue_id:v1.id, start:"2016-02-01 09:00", finish: "2016-02-01 10:00")
- # p1 = Performance.create(venue_id:v1.id, start:"2016-02-01 11:00", finish: "2016-02-01 12:00")
+ p1 = Performance.create(venue_id:v1.id, start:"2016-02-01 09:00", finish: "2016-02-01 10:00")
+ p1 = Performance.create(venue_id:v1.id, start:"2016-02-01 11:00", finish: "2016-02-01 12:00")
 
  

@@ -1,45 +1,5 @@
 <h1>New Performance</h1>
 
-<%= form_for @performance do |f| %>
+<%= render "form" %>
 
-<%= f.label :show_id, "Show Name" %>
-<% options = options_from_collection_for_select(@shows, :id, :title) %>
-<%= f.select :show_id, options %>
-<br>
-<br>
-
-<%= f.label :venue_id, "Venue" %>
-<% options = options_from_collection_for_select(@venues, :id, :name) %>
-<%= f.select :venue_id, options %>
-<br>
-<br>
-<%= f.label :genre_id, "Genre" %>
-<% options = options_from_collection_for_select(@genres, :id, :name) %>
-<%= f.select :genre_id, options %>
-<br>
-<br>
-<%= f.label :start, "Start Time" %>
-<%= f.datetime_select :start  %>
-<br>
-<br>
-<%= f.label :finish, "Finish Time" %>
-<%= f.datetime_select :finish  %>
-<br>
-<br>
-<%=f.label :price, "Ticket Price in £"%>
-<%=f.select :price, 1..100 %>
-<br>
-<br>
-<%= f.label :description %>
-<%= f.text_field :description, :size => 150 %>
-<br>
-<br>
-<%= f.label :restrictions %>
-<%= f.text_field :restrictions, :size => 100 %>
-
-<br>
-
-<%= f.submit "Create Show" %>
-
-
-<% end %>
+<% link_to "Back", performances_path %>

@@ -8,18 +8,38 @@ class PerformancesController < ApplicationController
   end
 
   def create
-    if Performance.overlap_check(params[:venue_id], params[:start], params[:finish]).empty?
-      performance.save
-      redirect_to(performances_path)
-    else
-      flash[:alert] = "Venue already booked at this time"
-      redirect_to(new_performance_path)
-    end
+    
+      performance = Performance.new(performance_params)
+      if Performance.overlap_check(performance.venue_id, performance.start, performance.finish).empty? 
+        Performance.create(performance_params)
+        redirect_to(performances_path)
+      else
+          flash[:alert] = "Venue already booked at this time"
+          redirect_to(new_performance_path)
+      end
   end
 
   def update
-    Performance.find(params[:id]).update(performance_params)
-    redirect_to performances_path
+    
+    performance1 = Performance.find(params[:id])
+    start = performance1.start
+    finish = performance1.finish
+    id = performance1.id
+
+    performance2 = Performance.new(performance_params)
+
+    performance1.update({start:nil, finish:nil})
+
+
+      if Performance.overlap_check(performance1.venue_id, performance2.start, performance2.finish).empty? 
+        performance1.update(performance_params)
+        redirect_to(performances_path)
+      else
+        performance1.update({start:start, finish:finish})
+        flash[:alert] = "You can not update to that time venue already booked at this time"
+        redirect_to performance_path(performance_params)
+      
+      end
   end
 
   def edit
@@ -52,7 +72,7 @@ class PerformancesController < ApplicationController
   private
 
    def performance_params
-     params.require(:performance).permit(:genre_id, :show_id, :venue_id, :price, :restrictions, :description, :start, :show )
+     params.require(:performance).permit(:genre_id, :show_id, :venue_id, :price, :restrictions, :description, :start, :finish )
    end
 
 end

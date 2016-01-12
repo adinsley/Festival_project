@@ -11,13 +11,15 @@
 <body>
 <header>
   <nav>
+    <p class="logo">Unmissable</p>
     <% if current_user %>
-    <p class="login_name">Logged In: <%= current_user.email.split('@')[0].capitalize %>:</p>
-    <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn" %>
     <ul>
-      <%= link_to "My Bookings", root_path, class: "btn" %>
-
-
+      <li class="logged_in">Logged In  <b><%= current_user.email.split('@')[0].capitalize%></b></li>
+      <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn" %></li>
+      <li><%= link_to "My Bookings", root_path, class: "btn" %></li>
+      <% else %>
+      <li><%= link_to "Sign In", new_user_session_path, class: "btn" %></li>
+      <li><%= link_to "Sign Up", new_user_registration_path, class: "btn" %></li>
     </ul>
     <% end %>
 

@@ -2,7 +2,7 @@
  
  */
  html body {
-   background-color: rgb(223, 223, 223);
+   background-color: dimgrey;
 
  }
 
@@ -12,13 +12,17 @@
    background-image: url(https://upload.wikimedia.org/wikipedia/commons/8/8f/DarkSideOfTheMoon1973.jpg);
    background-position: center;
    background-repeat: no-repeat;
+   top: 0px;
  }
 
 
 
  footer {
    height: 100px;
-   background-color: green;
+   background-color: #333333;
+  background-image: url(https://upload.wikimedia.org/wikipedia/commons/8/8f/DarkSideOfTheMoon1973.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
  }
 
  nav {
@@ -142,36 +146,10 @@
   font-size: 30px;
  }
 
- 
-  
- 
-
-
  /*  */
 
  .b {
   font-weight: bold;
- }
-
-
- 
-
- .go-left {
-   float: left;
-
- }
-
- .go-right {
- float: right;
-
- }
-
-
-
-
- .booked {
-    color: red;
-    font-weight: bold;
  }
 
 
@@ -182,26 +160,48 @@
  }
 
  /* SEARCH BOXES */
+.container_main {
+  width: 70%;
+  margin: 0 auto;
+  background-color: transparent;
+  margin-top: 10px;
+  height: 1500px;
+  overflow: scroll;
+  }
+ 
  .container  {
-   width: 70%;
+   width: 100%;
    margin: 0 auto;
    background-color: transparent;
+   margin-top: 10px;
   
  }
 
  .row {
+
+   display: block;
+   
+   margin: 0 -10px;
+   
+ }
+
+ .row-main {
+
    display: block;
    overflow: scroll;
    margin: 0 -10px;
+   
  }
 
  .grid {
    display: inline-block;
    vertical-align: top;
-   margin-right: -4px;
+   
+   
    padding: 0 10px;
    box-sizing: border-box;
    margin: 0 -10px;
+
 
  }
 
@@ -228,6 +228,7 @@
 
  .grid-6 {
    width: 50%
+  
  }
 
  .grid-7 {
@@ -257,15 +258,22 @@
  /* PANEL COMPONENTS*/
 
  .panel {
+    padding-top: 10px;
    margin-bottom: 15px;
    background-color: white;
-   
+   text-align: center;
+   line-height: 1rem;
+   height:500px;
+   overflow: scroll;
 
+  
  }
   .panel-heading {
    padding: 15px 20px;
    font-size: 26px;
-   color: red;
+   color: white;
+   background-color: black
+
   }
 
   .panel-body  {
@@ -275,10 +283,29 @@
 
   .panel-footer {
    padding: 8px 20px;
-   background-color: rgb(241, 251,251);
+   background-color: ;
   }
 
   .panel-primary .panel-heading {
-   background-color: rgb(51, 188, 184);
+   background-color: black;
   }
 
+  /*Performance*/
+
+  .show_name{
+    font-size: 1.5rem;
+  
+  }
+
+  .booked {
+    display: inline-block;
+    color: red;
+    margin: 2.5px;
+
+  }
+
+  .thumbnail {
+    max-width:100%;
+    max-height:100%;
+
+  }

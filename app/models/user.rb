@@ -11,4 +11,9 @@ class User < ActiveRecord::Base
     self.role.to_s == role_to_compare.to_s
   end
 
+  def self.find_booking(current_user)
+    User.find do |user| user.booking == current_user
+    end
+  end
+
 end

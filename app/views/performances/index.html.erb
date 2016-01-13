@@ -2,25 +2,44 @@
 <%= link_to "Create a New Performance", new_performance_path %>
 <br>
 <br>
+<main class = "container_main">
+    <section class = "row-main">
 <% @performances.each do |performance| %>
-<section class ="performance_div">
-<% if performance.show %>
-  <p class="show_name">Show <%= performance.show.title %></p>
-  <p class="venue_name">Venue <%= performance.venue.name %></p>
-  
-  <p class="date">Date <%= performance.human_readable_start_date %></p>
-  <p class="date">Start Time <%= performance.human_readable_start_time %></p>
-  <p class="duration">Duration <%= performance.duration_in_minutes %> minutes</p>
-        <% performance.bookings.each do |booking| %>
-            <% if current_user %>
-              <% booking.user.id == current_user.id %>
-                <p class="booked">You are going to this concert</p>
-            <%end %>  
-            <%end%>
-        <%end%>
-  <br> 
-  <%= link_to "See Performance details", performance_path(performance), class: "btn" %>
-  <%= link_to "Book this Performance", new_performance_booking_path(performance), class: "btn" %> 
-</section>
 
+  <% if performance.show %>
+      <div class="grid grid-6">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+          <p class="show_name"><%= performance.show.title %></p>
+          <p class="venue_name">Venue <%= performance.venue.name %></p>
+          </div>
+          <div class="panel-body">
+            <div class="container">
+              <section class = "row-main">
+                <div class="grid grid-6">
+                  <img src=<%= performance.show.image%> class="thumbnail">
+                </div>
+                <div class="grid grid-6">
+                    <p class="date">Date <%= performance.human_readable_start_date %></p>
+                    <p class="date">Start Time <%= performance.human_readable_start_time %></p>
+                    <p class="duration">Duration <%= performance.duration_in_minutes %> minutes</p>
+                          <% performance.bookings.each do |booking| %>
+                            <% if current_user %>
+                            <% booking.user.id == current_user.id %>
+                              <p class="booked">Booked</p>
+                            <%end %>  
+                          <%end%>
+                      <%end%>
+                      </div>    
+  <%= link_to "More Info", performance_path(performance), class: "btn" %>
+  <%= link_to "Book Tickets", new_performance_booking_path(performance), class: "btn" %> 
+              </div>
+          
+        </div>
+  </div> 
+  <br> 
+    </div>
 <% end %>
+  </section>
+</main> 
+

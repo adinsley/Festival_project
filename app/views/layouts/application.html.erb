@@ -11,10 +11,12 @@
 <body>
 <header>
   <nav>
-    <p class="logo">Unmissable</p>
     <% if current_user %>
-    <ul>
+    <ul class="current_user">  
+      <li class="logo">Unmissable</li>
       <li class="logged_in">Logged In  <b><%= current_user.email.split('@')[0].capitalize%></b></li>
+    </ul>
+    <ul class="account_buttons">
       <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn" %></li>
       <li><%= link_to "My Bookings", root_path, class: "btn" %></li>
       <% else %>
@@ -65,6 +67,9 @@
   <p class="alert"><%= alert %></p>
 
 <%= yield %>
+<footer>
+  
+</footer>
 
 </body>
 </html>

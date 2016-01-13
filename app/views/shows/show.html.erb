@@ -1,7 +1,8 @@
 <h1><%= @show.title %></h1>
-<img src="@show.image">
+<img src= <%=@show.image%>>
+
 <p>Description <%= @show.description  %></p>
-<a href="@show.link" class="list_link">Artist Website</a>
+<a href=<%=@show.link%> class="list_link">Artist Website</a>
   <% @show.performances.each do |performance|%>
       <section class="performance_div">
         <p>Venue: <%=performance.venue.name%></p>

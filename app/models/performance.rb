@@ -36,6 +36,16 @@ class Performance < ActiveRecord::Base
     ((finish - start)/60).to_i
   end
 
+  def tickets_sold
+        array = self.bookings.map do |booking| booking.tickets
+        end
+        array.sum
+  end
+
+  def remaining_capacity
+    capacity = self.venue.capacity.to_i
+    capacity - self.tickets_sold
+  end
 
 
-end
+  end

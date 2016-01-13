@@ -10,7 +10,7 @@ class ShowsController < ApplicationController
   end
 
   def update
-    Show.update(show_params)
+    Show.find(params[:id]).update(show_params)
 
     redirect_to(shows_path)
   end

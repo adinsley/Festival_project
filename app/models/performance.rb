@@ -13,7 +13,7 @@ class Performance < ActiveRecord::Base
 
   def self.search(query)
       # where(:title, query) -> This would return an exact match of the query
-      where("start", "%#{query}%") 
+      where("description", "%#{query}%") 
     end
 
   def human_readable_start_date

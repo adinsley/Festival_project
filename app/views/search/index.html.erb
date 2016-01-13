@@ -1,13 +1,23 @@
 <h1>Results Page</h1>
 
+
 <% @results.each do |result| %>
-  <section class="search_result" id="performance">
-      <% if result.class == Performance %>
-        <h5>Performance</h5>
-        <p><%= link_to "#{result.show.title}", show_path(result.show)%></p>
-        <p><%= result.human_readable_start_date%></p>
-        <p><%= link_to "Click to book #{result.human_readable_start_time} performance", performance_path(result)%></p>
-        <p><%= result.duration_in_minutes%></p>
+  <section class="search_result" id="show">
+      <% if result.class == Show %>
+        <h5>Show</h5>
+        <p><%= link_to "#{result.title}", show_path(result)%></p>
+        <% result.performances.each do |performance| %>
+
+        <%= link_to "Link to performance", performance_path(performance)%>
+        <p><%= performance.venue.name%></p>
+        <p><%= performance.human_readable_start_date%></p>
+        <p><%= performance.human_readable_start_time%></p>
+        
+
+
+
+
+        <%end%>
       <%end%>
   </section>
 

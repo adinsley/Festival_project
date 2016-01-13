@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'search/index'
+
   # get 'users/new'
 
   # get 'users/create'

@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   resources :bookings, :shows, :genres,:venues
 
   resources :performances do
-    resources :bookings
+    resources :bookings do 
+      get :confirm
+    end
   end
 
   # get 'users/new'

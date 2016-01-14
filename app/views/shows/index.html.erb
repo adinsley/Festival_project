@@ -1,8 +1,9 @@
 <% if @search_item %>
   <h2 class="Search Result">Search Shows for "<%=@search_item%>"</h2>
 <% end %>
-
+<% if current_user %>
 <%= link_to "Create a New Show", new_show_path %>
+<% end %>
 <h2>Show</h2>
   <% @shows.each do |show| %>
     <h1><%= show.title %></h1>

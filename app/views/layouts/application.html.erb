@@ -11,9 +11,9 @@
 <body>
 <header>
   <nav>
-    <% if current_user %>
     <ul class="current_user">  
       <li class="logo">Unmissable</li>
+    <% if current_user %>
       <li class="logged_in">Logged In  <b><%= current_user.email.split('@')[0].capitalize%></b></li>
     </ul>
     <ul class="account_buttons">

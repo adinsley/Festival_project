@@ -9,27 +9,27 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<header>
-  <nav>
+<nav>
+
+  <div class="title-bar">
     <ul class="current_user">  
-      <li class="logo">Unmissable</li>
-    <% if current_user %>
-      <li class="logged_in">Logged In  <b><%= current_user.email.split('@')[0].capitalize%></b></li>
+        <li class="logo">Unmissable</li>
+        <% if current_user %>
+        <li class="logged_in">Logged In  <b><%= current_user.email.split('@')[0].capitalize%></b></li>
     </ul>
+    
     <ul class="account_buttons">
-      <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn" %></li>
-      <li><%= link_to "My Bookings", root_path, class: "btn" %></li>
-      <% else %>
-      <li><%= link_to "Sign In", new_user_session_path, class: "btn" %></li>
-      <li><%= link_to "Sign Up", new_user_registration_path, class: "btn" %></li>
+        <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn" %></li>
+        <li><%= link_to "My Bookings", root_path, class: "btn" %></li>
+        <% else %>
+        <li><%= link_to "Sign In", new_user_session_path, class: "btn" %></li>
+        <li><%= link_to "Sign Up", new_user_registration_path, class: "btn" %></li>
     </ul>
-    <% end %>
-</nav>
+      <% end %>
+  </div>
 
 
-
-  <div class="container">
-    <div class="row">
+  <div class="search-container">
       <%= form_tag(search_index_path, :method => "get", class: "search-form", id: "search-form") do %>
           <div class="input-append">
             <%= text_field_tag :search, params[:search], class: "search_placeholder", placeholder: "Search" %>
@@ -38,35 +38,34 @@
             <button class="search_button" type="submit">Search</button>
         <%end%>
         </div> 
-    </div>
- </div>
+      </div>
+  
  <br>
  
- <div class="container">
-    <div class="row">
-      <div class="Search">
-        <%= form_tag(genres_path, :method => "get", class: "navbar-form", id: "search-form") do %>
-          <div class="drop_down">
+  <div class="search-container">
+      <%= form_tag(genres_path, :method => "get", class: "navbar-form", id: "search-form") do %>
+        <div class="drop_down">
             <select id="genre_id" name="genre_id">
               <%= options_from_collection_for_select(Genre.all, :id, :name) %>
-          </select>
-          <button class="search_button_genre" type="submit" name="search">Genres</button>
-       <%end%>
-          </div>
-      </div>  
-   </div>
-</div>  
+            </select>
+            <button class="search_button_genre" type="submit" name="search">Genres</button>
+            <%end%>
+        </div>
+  </div>  
+   
 
-<nav class="container">
-  <div class="row">
+
+  
     <ul class="site-links">
       <li><%= link_to "Venues", venues_path, class: "btn" %></li>
       <li><%= link_to "Shows ", shows_path, class: "btn" %></li>
-      <li><%= link_to "Performaces", performances_path, class: "btn" %></li>
+      <li><%= link_to "Performances", performances_path, class: "btn" %></li>
     </ul>
-  </div>
+ 
+
+
 </nav>
-</header>
+
 
    
 

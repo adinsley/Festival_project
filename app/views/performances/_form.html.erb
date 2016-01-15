@@ -17,11 +17,11 @@
 <br>
 <br>
 <%= f.label :start, "Start Time" %>
-<%= f.datetime_select :start  %>
+<%= f.datetime_local_field :start, min: Time.zone.now.beginning_of_hour, max: (Time.zone.now + 1.year), step: 15.minutes  %>
 <br>
 <br>
 <%= f.label :finish, "Finish Time" %>
-<%= f.datetime_select :finish  %>
+<%= f.datetime_local_field :finish, min: Time.zone.now.beginning_of_hour, max: (Time.zone.now + 1.year), step: 1.hour  %>
 <br>
 <br>
 <%=f.label :price, "Ticket Price in £"%>

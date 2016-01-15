@@ -1,15 +1,52 @@
-<h1><%= @show.title %></h1>
-<img src= <%=@show.image%>>
+<div class="grid grid-6">
+  <div class="panel panel-primary">
+    <div class= 'panel-heading'>
+      <p><%= @show.title %></p>
+    </div>
+    <div class="panel-body">
+      <%= @show.description  %>
+    </div>
+      <div class="panel-footer">
+      <a href=<%=@show.link%> class="list_link">Visit Artist Website</a>
+    </div>
+  </div>
+</div>
 
-<p>Description <%= @show.description  %></p>
-<a href=<%=@show.link%> class="list_link">Artist Website</a>
-  <% @show.performances.each do |performance|%>
-      <section class="performance_div">
-        <p>Venue: <%=performance.venue.name%></p>
-      <% if performance.start %>
-        <p>Date <%=performance.human_readable_start_date%></p>
-        <p>Start Time <%=performance.human_readable_start_time%></p>
-      <%end%>
+<div class="grid grid-6">
+  <div class="panel panel-primary">
+    <div class= 'panel-heading-show'>
+      <img src= <%=@show.image%> class="thumbnail">
+    </div> 
+    <div class="panel-body">
+      <table style="width:100%">
+        <h3 class="table-title">Upcoming Performances</h3>
+        <tr>
+          <th>Venue</th>
+          <th>Date</th> 
+          <th>Start Time</th>
+          <th>Book</th>
+          <th>More Info</th>
+        </tr>
+        <% @show.performances.each do |performance|%>
+       
+          <tr>
+              <td><%=performance.venue.name%></td>
+              <td><%=performance.human_readable_start_date%></td> 
+              <td><%=performance.human_readable_start_time%></td>
+              <td><%=link_to "Book", new_performance_booking_path(performance)%></td>
+              <td><%=link_to "More Info", performance_path(performance)%></td>
+              
+          </tr>
+        </a>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div> 
+      
+ 
     
-    </section>
-<% end %>
+  
+
+    
+   

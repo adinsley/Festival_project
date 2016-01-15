@@ -6,31 +6,26 @@
 
  }
 
- header {
-   height: 300px;
-   background-color: #333333;
-   background-image: url(https://upload.wikimedia.org/wikipedia/commons/8/8f/DarkSideOfTheMoon1973.jpg);
-   background-position: center;
-   background-repeat: no-repeat;
-   top: 0px;
-  
- }
-
-
-
- footer {
-   height: 100px;
-   background-color: #333333;
-  background-image: url(http://farm4.static.flickr.com/3172/2561355115_290957c9a6.jpg);
-  background-position: center;
-  background-repeat: repeat;
+footer {
+height: 100px;
+opacity: 40%;
+background-color: #333333;
+background-image: url(http://farm4.static.flickr.com/3172/2561355115_290957c9a6.jpg);
+background-position: center;
+background-repeat: repeat;
  }
 
  nav {
- background-color: #333333;
- height: 65px;
- line-height: 65px;
+  background-color: #333333;
+  background-image: url(https://upload.wikimedia.org/wikipedia/commons/8/8f/DarkSideOfTheMoon1973.jpg);
+  background-size:cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 300px;
+  line-height: 30px;
+  text-align: center;
  }
+
 
  nav ul {
  padding-left: 0px;
@@ -50,6 +45,12 @@
    font-size: 12px;
    font-weight: 100;
    text-decoration: none;}
+
+  .title-bar {
+    height: 50px;
+    margin-bottom:20px;
+    line-height: 50px;
+  }
 
 
  .current_user {
@@ -76,15 +77,18 @@
  }
 
 /*Main Search Form*/
+ 
+
  #search-form {
-  text-align: center;
   display: block;
+  height: 40px; 
  }
  .search_button {
+  line-height: 1.15em;
   position:relative;
   padding:8px 15px;
-  left:-8px;
-  border:2px solid rgb(35,45,66);
+  margin-left:-3px;
+  border:1px solid rgb(35,45,66);
   background-color: white;
   color: rgb(35,45,66);
  }
@@ -100,29 +104,31 @@
 
  /*Genre DropDown */
 
+
  .search_button_genre {
-  position:relative;
-  padding:7px 15px 5px 15px;
-  left:-8px;
-  border:2px solid rgb(35,45,66);
-  background-color: white;
-  color: rgb(35,45,66);
+    height:33px;
+    line-height: 1em;
+    position:relative;
+    padding:8px 15px 8px 15px;
+    margin-left:-4px;
+    border:1px solid rgb(35,45,66);
+    background-color: white;
+    color: rgb(35,45,66);
  }
  .search_button_genre:hover {
    background: #e80e44;
    text-decoration: none;
  }
- #genre_id {
+  #genre_id {
   font-size: 24px;
   background: white;
-  border:0px solid #dbdbdb;
   color: rgb(35,45,66);
+  margin-top: 5px;
  }
 
  /* Site Links */
 
  .site-links{
-
   background-color: transparent;
   width: 100%;
   text-align: center;
@@ -147,6 +153,7 @@
   font-size: 30px;
  }
 
+
  /*  */
 
  .b {
@@ -161,15 +168,7 @@
  }
 
  /* SEARCH BOXES */
-.container_main {
-  width: 70%;
-  margin: 0 auto;
-  background-color: transparent;
-  margin-top: 10px;
-  height: 1500px;
-  overflow: scroll;
-  }
- 
+
  .container  {
    width: 100%;
    margin: 0 auto;
@@ -179,17 +178,7 @@
  }
 
  .row {
-
    display: block;
-   
-   margin: 0 -10px;
-   
- }
-
- .row-main {
-
-   display: block;
-   overflow: scroll;
    margin: 0 -10px;
    
  }
@@ -197,13 +186,9 @@
  .grid {
    display: inline-block;
    vertical-align: top;
-   
-   
    padding: 0 10px;
    box-sizing: border-box;
    margin: 0 -10px;
-
-
  }
 
  .grid-1 {
@@ -264,29 +249,39 @@
    background-color: white;
    text-align: center;
    line-height: 1rem;
-   height:400px;
+   max-height: 500px;
    overflow: scroll;
 
   
  }
   .panel-heading {
+    margin-top: -10px;
    padding: 15px 20px;
    font-size: 26px;
    color: white;
    background-color: black
+  }
 
+  .panel-heading-show {
+    margin-top: -10px;
+    padding: 15px 20px;
+    font-size: 26px;
+    color: white;
+    background-color: black;
+    text-align: left;
   }
 
   .panel-body  {
    padding: 15px 20px;
+   text-align: left;
 
   }
 
   .panel-footer {
-    color: white;
+   color: white;
    padding: 20px 30px;
    background-color: black;
-   height: 100px;
+
   }
 
   .panel-footer a {
@@ -295,6 +290,7 @@
     text-decoration: none;
     font-size: 20px;
     padding: 20px;
+    margin-bottom:-35px;
   }
 
   .panel-primary .panel-heading {
@@ -308,7 +304,6 @@
     line-height: 1.5rem;
   
   }
-
   .venue_name{
     font-size: 1.2rem;
   }
@@ -317,11 +312,32 @@
     display: inline-block;
     color: red;
     margin: 2.5px;
-
   }
 
   .thumbnail {
-    max-width:100%;
-    max-height:100%;
+    max-width:200px;
+    max-height:200px;
+    display: inline-block;
+  }
+
+  /* TABLE ELEMENTS*/
+
+  table th tr {
+    margin-top:-5px;
+    border: 1px solid black;
+    text-align: left;
+  }
+
+  th  {
+  font-size:14px;
+  text-align:left;
+    }
+
+  .table-title {
+    margin-top:0px;
 
   }
+
+
+
+    

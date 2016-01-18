@@ -2,6 +2,8 @@ class BookingsController < ApplicationController
 
   before_action :authenticate_user!
 
+
+
   def new
     @performance = Performance.find(params[:performance_id])
     @booking = Booking.new

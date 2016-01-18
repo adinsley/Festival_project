@@ -1,5 +1,17 @@
 <%= form_for @show do |f| %>
 
+<% if @show.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@show.errors.count, "error") %> has prohibited this article from being saved:</h2>
+ 
+    <ul>
+    <% @show.errors.full_messages.each do |msg| %>
+      <li class="error-message"><h2><%= msg %></h2></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%= f.label :title, "Show Title" %>
 <%= f.text_field :title %>
 <br>

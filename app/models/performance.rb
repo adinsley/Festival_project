@@ -10,6 +10,8 @@ class Performance < ActiveRecord::Base
   scope :start_before, -> (finish){where("start < ?", finish)}
   scope :overlap_check, -> (v_id,start,finish){venue_check(v_id).finish_after(start).start_before(finish)}
 
+ 
+
 
   def self.search(query)
       # where(:title, query) -> This would return an exact match of the query

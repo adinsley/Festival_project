@@ -4,9 +4,13 @@ class ShowsController < ApplicationController
   end
 
   def create
-    Show.create(show_params)
-
-    redirect_to(shows_path)
+     @show = Show.new(show_params)
+      if @show.save
+        redirect_to(shows_path)
+      else
+      render :new
+    end
+  
   end
 
   def update

@@ -3,29 +3,39 @@ class BookingsController < ApplicationController
   before_action :authenticate_user!
 
 
-
   def new
     @performance = Performance.find(params[:performance_id])
     @booking = Booking.new
   end
 
+
   def create
     
     tick_amount = booking_params[:tickets].to_i
-    performance = Performance.find(params[:performance_id])
-    seats_left = performance.remaining_capacity
+
+   
+    @performance = Performance.find(params[:performance_id])
+    seats_left = @performance.remaining_capacity
     a = seats_left - tick_amount
 
-    bookingtemp = Booking.new(booking_params)
+    
 
     if a >= 0 
-      if Booking.overlap_check(performance.start, performance.finish).empty?
-        @booking = current_user.bookings.create(booking_params)
-        redirect_to(root_path)
+      if Booking.overlap_check(@performance.start, @performance.finish).empty?
+        @booking = current_user.bookings.new(booking_params)
+          if @booking.save
+            redirect_to(root_path)
+          else
+            render :new
+          end
       else
         # redirect_to( confirm_performance_bookings_path, lala: 'lala' )
-        @booking = current_user.bookings.create(booking_params)
-        redirect_to( performance_booking_confirm_path(performance, @booking) )
+        @booking = current_user.bookings.new(booking_params)
+          if @booking.save
+            redirect_to( performance_booking_confirm_path(@performance, @booking) )
+          else
+            render :new
+          end
       end
     else
       flash[:alert] = "Not enough tickets remain to support that booking only #{seats_left} seats left"

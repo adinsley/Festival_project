@@ -1,24 +1,33 @@
 <h1>New Booking for</h1>
+    <h1><%= @performance.show.title %></h1>
+    <p class="big_venue">Venue: <%= @performance.venue.name%></p>
+    <p class="big_date">Date <%= @performance.human_readable_start_date %></p>
+    <p class="big_start">Start Time <%= @performance.human_readable_start_time %></p>
+    <p class="big_duration">Duration <%= @performance.duration_in_minutes %> minutes</p>
+    <p>Venue Location <%= @performance.venue.loaction %> </p>
+    <p>Genre <%= @performance.genre.name %></p>
+    <p>Description <%= @performance.description %></p>
+    <p>Restrictions <%= @performance.restrictions %></p>
 
-<h1><%= @performance.show.title %></h1>
-<p class="big_venue">Venue: <%= @performance.venue.name%></p>
-<% if @performance.start %>
-      <p class="big_date">Date <%= @performance.human_readable_start_date %></p>
-      <p class="big_start">Start Time <%= @performance.human_readable_start_time %></p>
-      <p class="big_duration">Duration <%= @performance.duration_in_minutes %> minutes</p>
-<%end%>
+      <%=form_for [@performance, @booking] do |f| %>
 
-<p>Venue Location <%= @performance.venue.loaction %> </p>
-<p>Genre <%= @performance.genre.name %></p>
-<p>Description <%= @performance.description %></p>
-<p>Restrictions <%= @performance.restrictions %></p>
+      <% if @booking.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@booking.errors.count, "error") %> has prohibited this booking being made:</h2>
+       
+          <ul>
+          <% @booking.errors.full_messages.each do |msg| %>
+            <li class="error-message"><h2><%= msg %></h2></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
 
-<%=form_for [@performance, @booking] do |f| %>
-  <%= f.label :tickets %>
-  <%=f.text_field :tickets %>
-  <%=f.hidden_field :performance_id, value: @performance.id %>
-
-  <%=f.submit 'Book Tickets' %>
-<%end%>
-
+        <%= f.label :tickets %>
+        <%=f.text_field :tickets %>
+        <%=f.hidden_field :performance_id, value: @performance.id %>
+        <%=f.submit 'Book Tickets' %>
+      <%end%>
+  
+    
 

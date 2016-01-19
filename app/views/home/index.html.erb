@@ -1,0 +1,52 @@
+<main class = "container_main">
+  <section class = "row-main">
+    <div class="grid grid-12">
+      <div class="panel-heading-main">
+        <h1>Don't Miss a thing</h1>
+      </div>
+      <div>
+        <p class="Home-page-info">
+            Nullam fringilla nulla eu aliquam blandit. Maecenas porta in diam eget finibus. Duis leo odio, malesuada eget eleifend eu, laoreet ut urna. Nulla rhoncus, mi sit amet varius pretium, erat nisi pulvinar libero, in maximus sapien mauris eget orci. Vivamus at accumsan dolor. Praesent eu rutrum eros, vel vulputate nunc. In id mi bibendum, consequat orci at, imperdiet ipsum. Vivamus auctor ullamcorper mauris, vitae bibendum orci malesuada et. Donec sed neque tempor, imperdiet dolor aliquam, posuere odio. Vivamus maximus elementum lectus id faucibus. Donec semper suscipit viverra. Integer at sapien vel turpis sodales rhoncus. Nam dapibus fringilla diam eu ultrices. Donec dictum dignissim mattis. Morbi finibus leo tortor, ut cursus mauris ullamcorper in. Aenean fringilla gravida leo vitae mattis.
+        </p>
+      </div>
+    </div>
+  </section>
+    <section class = "row-main">
+  <h2>Check Out these recently added shows</h2>
+<% @performances.each do |performance| %>
+
+  <% if performance.show %>
+      <div class="grid grid-6">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+          <p class="show_name"><%= performance.show.title %></p>
+          <p class="venue_name"><%= performance.venue.name %></p>
+          </div>
+          <div class="panel-body">
+            <div class="container">
+              <section class = "row-main">
+                <div class="grid grid-6">
+                  <img src=<%= performance.show.image%> class="thumbnail">
+                </div>
+                <div class="grid grid-6">
+                    <p class="date"><%= performance.human_readable_start_date %></p>
+                    <p class="date"><%= performance.human_readable_start_time %></p>
+                    <p class="duration">Duration <%= performance.duration_in_minutes %> minutes</p>
+                          <% performance.bookings.each do |booking| %>
+                          <%end%>
+                      <%end%>
+                    </div> 
+                    <div class="panel-footer">   
+                      <%= link_to "More Info", performance_path(performance), class: "btn" %>
+                      <%= link_to "Book Tickets", new_performance_booking_path(performance), class: "btn" %> 
+                    </div>
+              </div>
+          
+        </div>
+  </div> 
+  <br> 
+    </div>
+<% end %>
+  </section>
+</main> 
+

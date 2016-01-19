@@ -1,0 +1,12 @@
+<h1>Create New Data</h1>
+<h2><%= link_to "Create New Venue", new_venue_path %></h2>
+<h2><%= link_to "Create New Show/Artist", new_show_path %></h2>
+<h2><%= link_to "Create New Genre Type", new_genre_path %></h2>
+<h2><%= link_to "Create New Performance", new_performance_path %></h2>
+
+<h1>Edit Existing Data</h1>
+<h2>Existing Performances Shown in Alphabetical Order</h2>
+<% @performances.each do |performance| %>
+<p><%=performance.show.title%> at <%=performance.venue.name%> on <%=performance.human_readable_start_date%> at <%= performance.human_readable_start_time%>, <%= link_to "Edit Performance", edit_performance_path(performance) %></p>
+<%end%>
+

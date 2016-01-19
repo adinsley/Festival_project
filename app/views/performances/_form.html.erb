@@ -1,18 +1,33 @@
 <%= form_for @performance do |f| %>
 
+<% if @performance.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@performance.errors.count, "error") %> has prohibited this booking being made:</h2>
+ 
+    <ul>
+    <% @performance.errors.full_messages.each do |msg| %>
+      <li class="error-message"><h2><%= msg %></h2></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%= f.label :show_id, "Show Name" %>
-<% options = options_from_collection_for_select(@shows, :id, :title) %>
+<% show_id =  @performance.show ? @performance.show.id : @shows.last.id %>
+<% options = options_from_collection_for_select(@shows, :id, :title, show_id) %>
 <%= f.select :show_id, options %>
 <br>
 <br>
 
 <%= f.label :venue_id, "Venue" %>
-<% options = options_from_collection_for_select(@venues, :id, :name) %>
+<% venue_id = @performance.venue ? @performance.venue.id : @venues.last.id %>
+<% options = options_from_collection_for_select(@venues, :id, :name, venue_id) %>
 <%= f.select :venue_id, options %>
 <br>
 <br>
 <%= f.label :genre_id, "Genre" %>
-<% options = options_from_collection_for_select(@genres, :id, :name) %>
+<% genre_id = @performance.genre ? @performance.genre.id : @genres.last.id %>
+<% options = options_from_collection_for_select(@genres, :id, :name, genre_id) %>
 <%= f.select :genre_id, options %>
 <br>
 <br>

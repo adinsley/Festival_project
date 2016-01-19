@@ -11,26 +11,12 @@ Rails.application.routes.draw do
 
   get 'search/index'
 
-  # get 'users/new'
+  get 'home/index'
+  get 'home/admin'
 
-  # get 'users/create'
-
-  # get 'users/update'
-
-  # get 'users/edit'
-
-  # get 'users/destroy'
-
-  # get 'users/index'
-
-  # get 'users/show'
-
-  # get 'home/about'
-
-  
 
   devise_for :users
-  root to: "bookings#index"
+  root to: "home#index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

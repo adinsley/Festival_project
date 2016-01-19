@@ -8,11 +8,19 @@ class PerformancesController < ApplicationController
   end
 
   def create
+    @performance = Performance.new(performance_params)
+    @venues = Venue.all
+    @genres = Genre.all
+    @shows = Show.all
+      
     
-      performance = Performance.new(performance_params)
-      if Performance.overlap_check(performance.venue_id, performance.start, performance.finish).empty? 
-        Performance.create(performance_params)
-        redirect_to(performances_path)
+      @performance = Performance.new(performance_params)
+      if Performance.overlap_check(@performance.venue_id, @performance.start, @performance.finish).empty? 
+          if @performance.save
+            redirect_to(performances_path)
+          else
+            render :new
+          end
       else
           flash[:alert] = "Venue already booked at this time"
           redirect_to(new_performance_path)
@@ -57,13 +65,8 @@ class PerformancesController < ApplicationController
   end
 
   def index
-      if params[:search]
-            @performances = Performance.search(params[:search]).order("created_at DESC")
-            @search_item = params[:search]
-          else
-            @performances = Performance.all.order("created_at DESC")
-          end
-    end
+    @performances = Performance.all.order("created_at DESC")
+  end
 
   def show
     @performance = Performance.find(params[:id])

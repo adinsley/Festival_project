@@ -59,6 +59,15 @@ class Performance < ActiveRecord::Base
     capacity - self.tickets_sold
   end
 
+  def ten_percent_remain
+     
+      if remaining_capacity < ((self.venue.capacity.to_i)/10)
+        return "Last Few Tickets"
+      else
+        return "Good Ticket Availability"
+      end
+  end
+
   def finish_time_is_after_start_time
 
       if self.finish < self.start 

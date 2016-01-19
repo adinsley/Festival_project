@@ -5,13 +5,20 @@
         <p class="big_date">Date <%= @performance.human_readable_start_date %></p>
         <p class="big_start">Start Time <%= @performance.human_readable_start_time %></p>
         <p class="big_duration">Duration <%= @performance.duration_in_minutes %> minutes</p>
+        <p class="ticket_available"><%= @performance.ten_percent_remain%></p>
+
   <%end%>
 
   <p>Venue Location <%= @performance.venue.loaction %> </p>
   <p>Genre <%= @performance.genre.name %></p>
   <p>Description <%= @performance.description %></p>
   <p>Restrictions <%= @performance.restrictions %></p>
-  <p>Tickets left<%= @performance.remaining_capacity %></p>
-
-  <%= link_to "Book this Performance", new_performance_booking_path(@performance), class: "btn" %> 
+  <% if current_user.username == "admin" %>
+  <p class="admin">Tickets left <%= @performance.remaining_capacity %></p>
+  <%end%>
+  <% if @performance.remaining_capacity !=0 %>
+    <%= link_to "Book this Performance", new_performance_booking_path(@performance), class: "btn" %>
+  <%else%>
+    <h3>This Performance is sold Out</h3>
+  <%end%>
 </section>

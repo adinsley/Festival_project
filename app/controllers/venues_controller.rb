@@ -1,4 +1,6 @@
 class VenuesController < ApplicationController
+
+  load_and_authorize_resource
   
   def new
     @venue = Venue.new

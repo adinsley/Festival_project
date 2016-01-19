@@ -1,4 +1,6 @@
 class PerformancesController < ApplicationController
+
+  load_and_authorize_resource
   
   def new
     @performance = Performance.new

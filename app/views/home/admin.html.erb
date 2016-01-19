@@ -1,21 +1,27 @@
-<h1>Create New Data</h1>
-<h2><%= link_to "Create New Venue", new_venue_path %>, 
-<%= link_to "Create New Show/Artist", new_show_path %>, <%= link_to "Create New Genre Type", new_genre_path %>, <%= link_to "Create New Performance", new_performance_path %></h2>
 
-<h1>Edit Existing Data</h1>
-<h2>Existing Performances Shown in Alphabetical Order</h2>
-<% @performances.each do |performance| %>
-  <p><%=performance.show.title%> at <%=performance.venue.name%> on <%=performance.human_readable_start_date%> at <%= performance.human_readable_start_time%>, <%= link_to "Edit Performance", edit_performance_path(performance) %>,  <%= link_to('Delete this Peformance', performance_path(performance), method: :delete, data: {confirm: 'Delete this Performance are you sure?'})%></p></p>
-<%end%>
-<h2>Existing Venues Shown in Alphabetical Order</h2>
-<% @venues.each do |venue| %>
-  <p><%=venue.name%>, <%=venue.loaction%> <%= link_to "Edit Venue", edit_venue_path(venue) %>, <%= link_to('Delete Venue', venue_path(venue), method: :delete, data: {confirm: 'Delete Venue are you sure?'})%></p>
-<%end%>
-<h2>Existing Shows Shown in Alphabetical Order</h2>
-<% @shows.each do |show| %>
-  <p><%=show.title%>, <%= link_to "Edit Show", edit_show_path(show) %>, <%= link_to('Delete Show/Artist', show_path(show), method: :delete, data: {confirm: 'Delete Show or Artist are you sure?'})%></p>
-<%end%>
-<h2>Existing Genres Shown in Alphabetical Order</h2>
-<% @genres.each do |genre| %>
-  <p><%=genre.name%>, <%= link_to "Edit Genre", edit_genre_path(genre) %>, <%= link_to('Delete Genre Type', genre_path(genre), method: :delete, data: {confirm: 'Delete genre type are you sure?'})%></p></p>
+<% if can? :update, @performance %>
+
+  <h1>Create New Data</h1>
+  <h2><%= link_to "Create New Venue", new_venue_path %>, 
+  <%= link_to "Create New Show/Artist", new_show_path %>, <%= link_to "Create New Genre Type", new_genre_path %>, <%= link_to "Create New Performance", new_performance_path %></h2>
+
+  <h1>Edit Existing Data</h1>
+  <h2>Existing Performances Shown in Alphabetical Order</h2>
+  <% @performances.each do |performance| %>
+    <p><%=performance.show.title%> at <%=performance.venue.name%> on <%=performance.human_readable_start_date%> at <%= performance.human_readable_start_time%>, <%= link_to "Edit Performance", edit_performance_path(performance) %>,  <%= link_to('Delete this Peformance', performance_path(performance), method: :delete, data: {confirm: 'Delete this Performance are you sure?'})%></p></p>
+  <%end%>
+  <h2>Existing Venues Shown in Alphabetical Order</h2>
+  <% @venues.each do |venue| %>
+    <p><%=venue.name%>, <%=venue.loaction%> <%= link_to "Edit Venue", edit_venue_path(venue) %>, <%= link_to('Delete Venue', venue_path(venue), method: :delete, data: {confirm: 'Delete Venue are you sure?'})%></p>
+  <%end%>
+  <h2>Existing Shows Shown in Alphabetical Order</h2>
+  <% @shows.each do |show| %>
+    <p><%=show.title%>, <%= link_to "Edit Show", edit_show_path(show) %>, <%= link_to('Delete Show/Artist', show_path(show), method: :delete, data: {confirm: 'Delete Show or Artist are you sure?'})%></p>
+  <%end%>
+  <h2>Existing Genres Shown in Alphabetical Order</h2>
+  <% @genres.each do |genre| %>
+    <p><%=genre.name%>, <%= link_to "Edit Genre", edit_genre_path(genre) %>, <%= link_to('Delete Genre Type', genre_path(genre), method: :delete, data: {confirm: 'Delete genre type are you sure?'})%></p></p>
+  <%end%>
+<%else%>
+  <h3>You do not have permission to visit this page</h3>
 <%end%>

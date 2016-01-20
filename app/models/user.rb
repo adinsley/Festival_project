@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
   has_many :performances, through: :bookings
   has_many :bookings
+  has_many :interests
+  has_many :genres, through: :interests
+  
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

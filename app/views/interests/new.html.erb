@@ -1,0 +1,10 @@
+<%= form_for @interest do |f| %>
+  <%= f.label :genre_id, "Select things that interest you" %>
+  <br>
+  <%= f.collection_check_boxes(:genre_id, @genres, :id, :name,) %> 
+
+
+  <%= f.submit 'Add Interests' %>
+  <br>
+  <br>
+<% end %>

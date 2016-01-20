@@ -21,7 +21,7 @@
     <ul class="account_buttons">
         <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn" %></li>
         <li><%= link_to "Home", root_path, class: "btn" %></li>
-        <li><%= link_to "My Bookings", bookings_path%>
+        <li><%= link_to "My Account", users_show_path(current_user)%>
           <li><% if current_user.username == "admin" %>
             <%= link_to "Admin Panel", home_admin_path%>
           <% end %></li>
@@ -79,6 +79,20 @@
   <p class="alert"><%= alert %></p>
 
 <%= yield %>
+<h3>Check out these shows that match your interests</h3>
+<% if current_user %>
+<% suggestedarray = current_user.suggest_performances %>
+
+<p><% suggestedarray.each do |performance| %>
+
+  <% if performance.show %>
+    <%=link_to "#{performance.show.title}", performance_path(performance)%>,  </p>
+
+<%end%>
+<%end%>
+<%end%>
+
+
 <footer>
  
 </footer>

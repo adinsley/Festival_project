@@ -1,2 +1,14 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1>My account details</h1>
+<%= link_to "Update my Log in Details", edit_user_registration_path %>
+<p><%=current_user.email%></p>
+<p><%=current_user.created_at%></p>
+<h5>Your Interests</h5>
+
+<%= link_to "update your interests", new_interest_path(current_user) %>
+  <%current_user.genres.each do |genre| %>
+  <p><%=genre.name%></p>
+
+  <%end%>
+
+
+

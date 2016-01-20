@@ -22,4 +22,15 @@ class User < ActiveRecord::Base
     end
   end
 
+  def suggest_performances
+    genre_array = self.genres.map do |genre| 
+      genre.performances.map do |performance| 
+        performance 
+      end 
+    end
+    performance_array = genre_array.flatten
+    performance_array.sample(4)
+  end
+
+
 end

@@ -7,8 +7,15 @@ before_action :authenticate_user!
   end
 
   def new
+    @oldinterests = Interest.where({user_id:current_user.id})
+    
+    @oldinterests.each do |interest|
+      interest.delete
+    end
+
     @interest = Interest.new
     @genres = Genre.all
+
   end
 
   def create
